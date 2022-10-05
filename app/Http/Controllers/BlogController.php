@@ -14,7 +14,11 @@ class BlogController extends Controller
      */
     public function index()
     {
-        //
+        $blogs = Blog::latest()->paginate(10);
+        return[
+            "status" => 1,
+            "data"=> $blogs
+        ];
     }
 
     /**
@@ -35,7 +39,16 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $blog = Blog::create($request->all());
+        return[
+            "status" => 1,
+            "data" => $blog
+        ];
     }
 
     /**
@@ -46,7 +59,10 @@ class BlogController extends Controller
      */
     public function show(blog $blog)
     {
-        //
+        return[
+            "status" => 1,
+            "data" =>$blog
+        ];
     }
 
     /**
@@ -69,7 +85,18 @@ class BlogController extends Controller
      */
     public function update(Request $request, blog $blog)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'body'=> 'required',
+        ]);
+
+        $blog->update($request-->all());
+
+        return[
+            "status" => 1,
+            "data" => $blog,
+            "msg" => "blog update successfully"
+        ];
     }
 
     /**
@@ -80,6 +107,11 @@ class BlogController extends Controller
      */
     public function destroy(blog $blog)
     {
-        //
+        $blog->delete();
+        return[
+            "status" => 1,
+            "data" => $blog,
+            "msg" => "blog deleted succesfully"
+        ]
     }
 }
