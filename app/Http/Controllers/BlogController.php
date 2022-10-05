@@ -57,7 +57,7 @@ class BlogController extends Controller
      * @param  \App\Models\blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function show(blog $blog)
+    public function show(Blog $blog)
     {
         return[
             "status" => 1,
@@ -83,7 +83,7 @@ class BlogController extends Controller
      * @param  \App\Models\blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, blog $blog)
+    public function update(Request $request, Blog $blog)
     {
         $request->validate([
             'title' => 'required',
@@ -105,7 +105,7 @@ class BlogController extends Controller
      * @param  \App\Models\blog  $blog
      * @return \Illuminate\Http\Response
      */
-    public function destroy(blog $blog)
+    public function destroy(Blog $blog)
     {
         $blog->delete();
         return[
