@@ -112,6 +112,6 @@ class BlogController extends Controller
             "status" => 1,
             "data" => $blog,
             "msg" => "blog deleted succesfully"
-        ]
+        ];
     }
 }
